@@ -193,7 +193,6 @@ TEST(Split, Zero)
 	Node* evens = nullptr;
 
 	split(list, odds, evens);
-
 	EXPECT_TRUE(checkContent(odds, {11}));
 	EXPECT_TRUE(checkContent(evens, {0, 20}));
 
