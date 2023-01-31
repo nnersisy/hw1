@@ -19,30 +19,27 @@ void split(Node*& in, Node*& odds, Node*& evens)
   /* Add code here */
 // WRITE YOUR CODE HERE
 
-  if (!in) return;
+  if (in == nullptr) return;
 
   //if even in the original list
 
   //call recursive function
+	split(in->next, odds, evens);
 
-  if(in->value % 2 == 0 || in->value == 0)
+  if(in->value % 2 == 0)
   {
-      Node* temp = new Node(in->value, nullptr);
-      evens = temp;
-			split(in->next, odds, evens->next);
+		in->next = evens;
+    evens = in;
   }
 
   //else
-  else if(in->value % 2 == 1)
+  else 
   {
-      Node* temp2 = new Node(in->value, nullptr);
-      odds = temp2;
-			split(in->next, odds->next, evens);
+		in->next = odds;
+    odds = in;
   }
 
-  Node* lastVal = in;
-  in = in ->next;
-  lastVal->next = nullptr;
+  in = nullptr;
   
 }
 /* If you needed a helper function, write it here */
